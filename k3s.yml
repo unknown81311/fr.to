@@ -76,12 +76,12 @@ kind: Certificate
 metadata:
   name: fr.to
 spec:
-  commonName: fr.to
+  commonName: '*.fr.to'
   dnsNames:
-    - fr.to
+    - '*.fr.to'
   issuerRef:
     kind: ClusterIssuer
-    name: letsencrypt-prod
+    name: letsencrypt-stage
   secretName: fr.to-tls
 
 
