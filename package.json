@@ -1,0 +1,19 @@
+{
+  "name": "fr.to",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unknown81311/fr.to.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/unknown81311/fr.to/issues"
+  },
+  "homepage": "https://github.com/unknown81311/fr.to#readme"
+}
