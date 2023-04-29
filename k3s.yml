@@ -6,7 +6,7 @@ spec:
   entryPoints:
    - web
   routes:
-    - match: Host(`fr.to`)
+    - match: HostRegexp(`fr.to`, `{subdomain:[a-z0-9\-]+}.fr.to`)
       kind: Rule
       services:
       - name: fr-to-server
@@ -23,7 +23,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`fr.to`)
+      match: HostRegexp(`fr.to`, `{subdomain:[a-z0-9\-]+}.fr.to`)
       services:
         - name: fr-to-server
           port: 80
