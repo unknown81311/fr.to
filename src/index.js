@@ -1,9 +1,10 @@
 const express = require('express');
+const path = require('path');
 
 const app = express();
 
 // Serve files in static
-app.use(express.static(__dirname + "/../static"));
+app.use(express.static(path.join(__dirname, "..","static")));
 
 app.get('/', (req, res) => {
   res.send('Hello Express app!')
