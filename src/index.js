@@ -1,19 +1,48 @@
 const express = require('express');
-const path = require('path');
-
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const app = express();
 
-// Serve files in static
-html=(ip)=>`<script>document.documentElement.style.setProperty('background',(\`center url(http:cdn.discordapp.com/attachments/359482171452424192/\`+(((12529223249380105001n<<BigInt(32))|BigInt([${ip}].reduce((a,c,i)=>a+(Number(c)*(256**(3-i))),0)))-53812604099268683849107553763n)+"/png)black"))</script>`;
-app.get('/', (req, res) => {
-  res.send(html(req.headers['x-forwarded-for'].split(".")))
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json());
+app.use(cookieParser());
+
+const path = require('path');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+const fetch = require('node-fetch');
+const URL = require('url');
+
+const SerpApi = require('google-search-results-nodejs');
+const Search = new SerpApi.GoogleSearch(process.env['secret_api_key']);
+
+ret = a => a;
+
+app.use(express.static(__dirname + "/static"));
+
+app.get('/', async (req, res) => {
+  let parsed = URL.parse(req.url, true);
+  
+  let search = parsed.query;
+  res.render('home', { search:search.length?search:"" });
+});
+
+app.post('/', async (req, res) => {
+  let parsed = URL.parse(req.url, true).query;
+  let search = parsed.q;
+  const params = {
+    engine: "duckduckgo",
+    q: search,
+    kl: "us-en",
+    start:0,
+  };
+  
+  Search.json(params, (data)=>{
+    res.render('searchResults', { data });
+  });
 });
 
 app.listen(3000, () => {
-  console.log('server started');
-});
-
-
-app.listen(80, () => {
   console.log('server started');
 });
