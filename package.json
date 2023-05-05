@@ -1,23 +1,24 @@
 {
-  "name": "fr.to",
-  "version": "1.0.21",
+  "name": "nodejs",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/unknown81311/fr.to.git"
-  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/unknown81311/fr.to/issues"
-  },
-  "homepage": "https://github.com/unknown81311/fr.to#readme",
   "dependencies": {
+    "@types/node": "^18.0.6",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.9",
     "express": "^4.18.2",
-    "node-fetch": "^3.2.6"
+    "google-search-results-nodejs": "^2.1.0",
+    "node-duckduckgo": "^2.0.18",
+    "node-fetch": "^3.2.6",
+    "search-engine-client": "^1.2.6",
+    "url": "^0.11.0"
   }
 }
